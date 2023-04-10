@@ -4,7 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-@Component("accountDAO")
+import org.springframework.stereotype.Repository;
+@Repository("acdo")
 public class AccountsDAO{
 	
 	@Autowired
@@ -15,13 +16,18 @@ public class AccountsDAO{
 		AccountsDTO accountDTO=session.get(AccountsDTO.class,accountId);
 		return accountDTO;
 	}
+	
+	public void updateUser(AccountsDTO accountDTO) {
+		Session session=factory.getCurrentSession();
+		session.persist(accountDTO);
+	}
 	public SessionFactory getFactory() {
 		return factory;
 	}
 	public void setFactory(SessionFactory factory) {
 		this.factory = factory;
 	}
-	public void updateuser(AccountsDTO accountDTO) {
+	public void updateAccounts(AccountsDTO accountDTO) {
 		Session session=factory.getCurrentSession();
 		session.persist(accountDTO);
 	}

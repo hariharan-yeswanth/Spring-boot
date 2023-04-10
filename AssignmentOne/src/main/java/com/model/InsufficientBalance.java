@@ -6,9 +6,14 @@ public class InsufficientBalance extends Exception {
 		this.message=string;
 		// TODO Auto-generated constructor stub
 	}
+//	@Override
+//	public String toString() {
+//		// TODO Auto-generated method stub
+//		return super.toString();
+//	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "InsufficientBalance [message=" + message + "]";
 	}
+	
 }

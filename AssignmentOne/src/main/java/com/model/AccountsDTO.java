@@ -23,10 +23,11 @@ public class AccountsDTO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return this.id+" "+this.amount;
+		return "AccountsDTO [id=" + id + ", amount=" + amount + "]";
 	}
+	
+	
+	
 }

@@ -17,9 +17,9 @@ public class BankingService {
 		int amount=accountsDTO.getAmount();
 		int newAmount=amount+creditAmount;
 		accountsDTO.setAmount(newAmount);
-		accountDAO.updateuser(accountsDTO);
+		accountDAO.updateAccounts(accountsDTO);
 	}
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRED,rollbackFor= {InsufficientBalance.class})
 	public void doDebit(int accountId,int debitAmount)throws InsufficientBalance {
 		AccountsDTO accountsDTO=accountDAO.findByID(accountId);
 		int amount=accountsDTO.getAmount();
@@ -29,6 +29,6 @@ public class BankingService {
 		}
 		int newAmount=amount-debitAmount;
 		accountsDTO.setAmount(newAmount);
-		accountDAO.updateuser(accountsDTO);
+		accountDAO.updateAccounts(accountsDTO);
 	}
 }

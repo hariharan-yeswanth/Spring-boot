@@ -12,7 +12,7 @@ public class MyService{
 	public void doService(int accountId,int amount) {
 		AccountsDTO accountsDTO=accountDAO.findByID(accountId);
 		accountsDTO.setAmount(amount);
-		accountDAO.updateuser(accountsDTO);
+		accountDAO.updateAccounts(accountsDTO);
 	}
 	public AccountsDAO getDAO() {
 		return accountDAO;
