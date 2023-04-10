@@ -68,23 +68,23 @@ public class HelloController {
 //		return mandv;	
 //	}
 //	
-	@RequestMapping(value="hello/7{name}",method=RequestMethod.GET)
-	public ModelAndView sayHello6(@PathVariable String name,ModelAndView mandv,HttpServletRequest request) {
-		mandv.addObject("mykey","name");
+	@RequestMapping(value="hello7/{name}",method=RequestMethod.GET)
+	public ModelAndView sayHello7(@PathVariable String name,ModelAndView mandv,HttpServletRequest request) {
+		mandv.addObject("mykey",name);
 		mandv.setViewName("web");
 //		HttpSession session=request.getSession();
-		request.setAttribute("hello","hi hi hello");
+		request.setAttribute("hello1","hi hi hello");
 		return mandv;	
 	}
 //	
-//	@RequestMapping(value="hello8",method=RequestMethod.GET)
-//	public ModelAndView sayHello8(@RequestParam("uname") String name,ModelAndView mandv,HttpServletRequest request) {
-//		mandv.addObject("mykey","name");
-//		mandv.setViewName("web");
-////		HttpSession session=request.getSession();
-//		request.setAttribute("hello","hi hi hello"+name);
-//		return mandv;	
-//	}
+	@RequestMapping(value="hello8/{name}",method=RequestMethod.GET)
+	public ModelAndView sayHello8(@PathVariable String name,ModelAndView mandv,HttpServletRequest request) {
+		mandv.addObject("mykey",name);
+		mandv.setViewName("web");
+//		HttpSession session=request.getSession();
+		request.setAttribute("hello1","hi hi hello "+name);
+		return mandv;	
+	}
 //	@RequestMapping(value="hello/7{name}",method=RequestMethod.GET)
 //	public ModelAndView sayHello6(@PathVariable String name,ModelAndView mandv,HttpServletRequest request) {
 //		mandv.addObject("mykey","name");
@@ -93,7 +93,7 @@ public class HelloController {
 //		request.setAttribute("hello","hi hi hello");
 //		return mandv;	
 //	}
-	@RequestMapping(method=RequestMethod.GET,value="hello10")
+	@RequestMapping(method=RequestMethod.GET,value="hello9")
 	public ResponseEntity<User> sayHello10(){
 		User user=new User();
 		user.setUid(100);
@@ -101,13 +101,13 @@ public class HelloController {
 		return ResponseEntity.ok(user);	
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,value="hello11")
+	@RequestMapping(method=RequestMethod.POST,value="hello10")
 	public ResponseEntity<User> sayHello11(@RequestBody User user){
-		user.setUid(100+user.getid());
-		user.setUname(user.getName());
+		user.setUid(200+user.getid());
+		user.setUname("Hari"+user.getName());
 		return ResponseEntity.ok(user);	
 	}
-	@RequestMapping(method=RequestMethod.POST,value="hello12")
+	@RequestMapping(method=RequestMethod.POST,value="hello11")
 	public ResponseEntity<User> sayHello12(@RequestBody User user){
 		user.setUid(199000);
 		user.setUname("sdfghj");
