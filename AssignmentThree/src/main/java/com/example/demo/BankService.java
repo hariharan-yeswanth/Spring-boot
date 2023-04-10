@@ -9,23 +9,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service("ss")
 @Transactional
-public class UserService implements UserServiceInterface{
+public class BankService implements BankServiceInterface{
 
 	@Autowired
-	UserDAO bankDAO;
+	BankDAO bankDAO;
 	@Override
-	public void createUser(UserDTO bank) {
+	public void createUser(BankDTO bank) {
 		// TODO Auto-generated method stub
 		bankDAO.save(bank);
 	}
 
 	@Override
-	public UserDTO checkBalance(int id) {
+	public BankDTO checkBalance(int id) {
 		// TODO Auto-generated method stub
-		Optional<UserDTO> obj=bankDAO.findById(Integer.valueOf(id));
-		UserDTO bankAcc=obj.get();
+		Optional<BankDTO> obj=bankDAO.findById(Integer.valueOf(id));
+		BankDTO bankAcc=obj.get();
 		return bankAcc;
 	}
 
@@ -47,8 +48,8 @@ public class UserService implements UserServiceInterface{
 	}
 	@Transactional(propagation = Propagation.REQUIRED )
 	public void debitransfer(int id,int amount) throws InsufficientBalanceException {
-		Optional<UserDTO> obj1=bankDAO.findById(Integer.valueOf(id));
-		UserDTO bankAcc1=obj1.get();
+		Optional<BankDTO> obj1=bankDAO.findById(Integer.valueOf(id));
+		BankDTO bankAcc1=obj1.get();
 		if(bankAcc1.getAmount()<amount) {
 			throw new InsufficientBalanceException("Insufficient balance");
 		}
@@ -58,8 +59,8 @@ public class UserService implements UserServiceInterface{
 	}
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void creditransfer(int id,int amount) {
-		Optional<UserDTO> obj1=bankDAO.findById(Integer.valueOf(id));
-		UserDTO bankAcc=obj1.get();
+		Optional<BankDTO> obj1=bankDAO.findById(Integer.valueOf(id));
+		BankDTO bankAcc=obj1.get();
 		bankAcc.setAmount(bankAcc.getAmount()+amount);
 		System.out.println(bankAcc.getAmount());
 		bankDAO.save(bankAcc);

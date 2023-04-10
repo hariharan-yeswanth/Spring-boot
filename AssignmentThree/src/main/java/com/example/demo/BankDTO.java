@@ -1,16 +1,13 @@
 package com.example.demo;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-import org.hibernate.annotations.Generated;
+import javax.persistence.Id;
 
 
 
 @Entity
-public class UserDTO {
+public class BankDTO {
 	@Id
 	private int uid;
 	private String name;
@@ -39,3 +36,6 @@ public class UserDTO {
 	}
 	
 }
+
+
+
